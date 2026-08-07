@@ -12,35 +12,30 @@ const checkIcon = `
     <path d="M20 6 9 17l-5-5" />
 `;
 
-button.addEventListener("click", async (event) => {
-  event.preventDefault();
-  event.stopPropagation();
+const clipboard = new ClipboardJS("#copyButton");
 
-  try {
-    await navigator.clipboard.writeText(url);
+clipboard.on("success", () => {
+  button.classList.add("animate");
 
+  setTimeout(() => {
+    icon.innerHTML = checkIcon;
+    button.classList.remove("animate");
+    button.classList.add("copied");
+
+    button.title = "コピーしました";
+    button.setAttribute("aria-label", "コピーしました");
+  }, 120);
+
+  setTimeout(() => {
+    button.classList.remove("copied");
     button.classList.add("animate");
 
     setTimeout(() => {
-      icon.innerHTML = checkIcon;
+      icon.innerHTML = copyIcon;
       button.classList.remove("animate");
-      button.classList.add("copied");
-    }, 120);
-    button.title = "コピーしました";
-    button.setAttribute("aria-label", "コピーしました");
 
-    setTimeout(() => {
-      button.classList.remove("copied");
-      button.classList.add("animate");
-
-      setTimeout(() => {
-        icon.innerHTML = copyIcon;
-        button.classList.remove("animate");
-      }, 120);
       button.title = "リンクをコピー";
       button.setAttribute("aria-label", "リンクをコピー");
-    }, 1200);
-  } catch (error) {
-    console.error("Copy failed:", error);
-  }
+    }, 120);
+  }, 1500);
 });

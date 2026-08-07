@@ -12,21 +12,19 @@
   <body>
     <div class="link-box">
       <!-- URL -->
-      <a
+      <input
         class="link-text"
-        id="link"
-        href="https://ParusuRblx.github.io/AboutMe"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        https://ParusuRblx.github.io/AboutMe
-      </a>
-
+        id="copyTarget"
+        type="text"
+        readonly
+        value="https://ParusuRblx.github.io/AboutMe"
+      />
       <!-- コピー -->
       <button
         class="copy-button"
         id="copyButton"
         type="button"
+        data-clipboard-target="#copyTarget"
         aria-label="リンクをコピー"
         title="リンクをコピー"
       >
@@ -50,4 +48,5 @@
       </button>
     </div>
   </body>
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
 </html>
