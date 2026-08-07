@@ -1,0 +1,118 @@
+:root {
+  --background: #191919;
+  --border: #30302e;
+  --surface: #262626;
+  --accent: #2b4f9c;
+  --accent-hover: #3863c7;
+  --text: #c7c7c7;
+  --text-hover: #ffffff;
+
+  --transition: 0.5s ease;
+  --hover-transform: translateY(-1px);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--background);
+  font-family: "Segoe UI", sans-serif;
+}
+
+.link-box {
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  box-sizing: border-box;
+
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* URL */
+.link-text {
+  display: block;
+  min-width: 0;
+  padding: 8px 11px;
+
+  color: var(--text);
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 20px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  transition: var(--transition);
+}
+
+.link-text:hover {
+  color: var(--text-hover);
+  transform: var(--hover-transform);
+}
+
+/* コピーアイコン */
+.copy-button {
+  flex: 0 0 38px;
+
+  width: 38px;
+  height: 38px;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 0;
+  border-left: 1px solid var(--border);
+  background: var(--accent);
+
+  color: var(--text);
+  cursor: pointer;
+
+  transition: 0.15s ease;
+
+  transition: var(--transition);
+}
+
+.copy-button:hover {
+  background: var(--accent-hover);
+  transform: var(--hover-transform);
+}
+
+.copy-button:active {
+  background: var(--accent-hover);
+}
+
+.copy-button svg {
+  width: 17px;
+  height: 17px;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+.copy-button svg {
+  transition:
+    transform 0.1s ease,
+    opacity 0.1s ease;
+}
+
+.copy-button.animate svg {
+  transform: scale(0.7);
+  opacity: 0;
+}
+
+.copy-button.copied svg {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* コピー完了 */
+.copy-button.copied {
+  color: var(--text);
+}
